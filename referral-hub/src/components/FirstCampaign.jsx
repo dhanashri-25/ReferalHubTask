@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import SetupProgress from "../components/SetupProgress";
 import Button from "../components/Button";
 import { PlusIcon } from "@heroicons/react/24/outline";
 
-function FirstCampaign({ markStepComplete }) {
-  const navigate = useNavigate();
+function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
   const [campaign, setCampaign] = useState({
     name: "",
     promoterRewardType: "Points",
@@ -67,59 +65,67 @@ function FirstCampaign({ markStepComplete }) {
   };
 
   const handleSubmit = (e) => {
+    setFirstTime(false)
+    setDefaultValue("Dashboard")
     e.preventDefault();
     markStepComplete();
-    // Navigate to dashboard or completion screen
     alert("Campaign created successfully!");
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="mx-auto">
       <div className="bg-white p-8 rounded-lg shadow-sm">
         <div className="flex">
-          <div className="w-1/3 border-r border-gray-200 pr-8">
+          <div className="w-1/3 bg-gray-100 p-8 h-screen">
             <SetupProgress
               steps={steps}
               currentStep={4}
               completedSteps={[1, 2, 3]}
             />
           </div>
+          
           <div className="w-2/3 pl-8">
             <h2 className="text-xl font-medium mb-6">Create New Campaign</h2>
             <p className="text-sm text-gray-600 mb-6">
               Create a new referral campaign in just few steps.
             </p>
+            <div className='h-[1.2px] my-4 bg-gray-300 w-full'></div>
 
             <form onSubmit={handleSubmit}>
-              <div className="mb-6">
-                <label className="block text-sm font-medium mb-2">
+
+              <div className="mb-6 bg-gray-50 rounded-lg my-4">
+                <label className=" flex text-sm bg-gray-100 rounded-t-lg rounded-b-sm font-medium p-4">
                   Campaign Name
                 </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={campaign.name}
-                  onChange={handleInputChange}
-                  placeholder="e.g., Summer Referral Special"
-                  className="w-full border border-gray-300 rounded-md p-2 text-sm"
-                />
+                <div className="p-4">
+                  <input
+                    type="text"
+                    name="name"
+                    value={campaign.name}
+                    onChange={handleInputChange}
+                    placeholder="e.g., Summer Referral Special"
+                    className="w-full border border-gray-300 rounded-md p-2 text-sm "
+                  />
+                </div>
               </div>
 
-              <div className="border-t border-gray-200 pt-6 mb-6">
-                <h3 className="text-lg font-medium mb-4">Promoter Settings</h3>
-
+              <div className="mb-6 bg-gray-50 rounded-lg my-4">
+                <h3 className="flex text-lg bg-gray-100 rounded-t-lg rounded-b-sm font-medium p-4">Promoter Settings</h3>
+                <div className="p-4">
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">
-                      Reward Type*
+                    <label className="block text-gray-500  font-medium mb-2">
+                      Reward Type <span className="text-red-500 text-md">*</span>
                     </label>
-                    <div className="bg-blue-100 text-blue-700 rounded-md py-2 px-4 text-sm font-medium">
-                      Points
+                    <div className="bg-blue-100 text-blue-600 text-center rounded-md py-2 px-4 text-md font-semibold">
+                    Reward Type <span className="text-red-500 text-md">*</span>
+                      <br />
+                      <span className="text-sm">( $1 is equivalent to 10 points)</span>
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">
-                      Reward Value*
+                    <label className="block text-gray-500  font-medium mb-2">
+                    Reward Value <span className="text-red-500 text-md">*</span>
                     </label>
                     <input
                       type="text"
@@ -127,14 +133,14 @@ function FirstCampaign({ markStepComplete }) {
                       value={campaign.promoterRewardValue}
                       onChange={handleInputChange}
                       placeholder="e.g., 200 points"
-                      className="w-full border border-gray-300 rounded-md p-2 text-sm"
+                      className="w-full border border-gray-300 rounded-md p-5 text-sm"
                     />
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <label className="block text-sm font-medium mb-2">
-                    Promoter Message*
+                  <label className="block text-gray-500  font-medium mb-2">
+                    Promoter Message<span className="text-red-500 text-md">*</span>
                   </label>
                   <textarea
                     name="promoterMessage"
@@ -142,13 +148,13 @@ function FirstCampaign({ markStepComplete }) {
                     onChange={handleInputChange}
                     placeholder='e.g., "Hey! Share this with your friends and get $10 for each successful signup!"'
                     className="w-full border border-gray-300 rounded-md p-2 text-sm"
-                    rows="3"
+                    rows="5"
                   />
                 </div>
 
                 <div className="bg-blue-50 p-4 rounded-md mb-4">
                   <h4 className="text-sm font-medium mb-2">
-                    Follow-Up Strategy*
+                    Follow-Up Strategy<span className="text-red-500 text-md">*</span>
                   </h4>
 
                   <div className="mb-2 flex items-center">
@@ -278,6 +284,7 @@ function FirstCampaign({ markStepComplete }) {
                     <PlusIcon className="h-3 w-3 mr-1" /> Add Action
                   </button>
                 </div>
+                </div>
               </div>
 
               <div className="border-t border-gray-200 pt-6 mb-6">
@@ -322,7 +329,7 @@ function FirstCampaign({ markStepComplete }) {
                 </div>
 
                 <div className="mb-4">
-                  <label className="block text-sm font-medium mb-2 flex items-center">
+                  <label className="text-sm font-medium mb-2 flex items-center">
                     Form Fields*
                     <span className="ml-1 text-gray-400 text-xs">
                       <svg

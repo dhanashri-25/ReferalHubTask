@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import SetupProgress from "../components/SetupProgress";
 import Button from "../components/Button";
 import { ArrowUpTrayIcon } from "@heroicons/react/24/outline";
 
-function SyncCustomerData({ goToNextStep, markStepComplete }) {
-  const navigate = useNavigate();
+function SyncCustomerData({ goToNextStep , goToBckStep }) {
   const [file, setFile] = useState(null);
   const [zapierConnected, setZapierConnected] = useState(false);
 
@@ -23,24 +21,20 @@ function SyncCustomerData({ goToNextStep, markStepComplete }) {
   const handleZapierConnect = () => {
     setZapierConnected(true);
     setTimeout(() => {
-      markStepComplete();
       goToNextStep();
-      navigate("/ai-agent-rules");
     }, 1000);
   };
 
   const handleUploadSubmit = (e) => {
     e.preventDefault();
-    markStepComplete();
     goToNextStep();
-    navigate("/ai-agent-rules");
   };
 
   return (
     <div className="max-w-4xl mx-auto">
       <div className="bg-white p-8 rounded-lg shadow-sm">
         <div className="flex">
-          <div className="w-1/3 border-r border-gray-200 pr-8">
+          <div className="w-1/3 bg-gray-100 p-8">
             <SetupProgress steps={steps} currentStep={2} completedSteps={[1]} />
           </div>
           <div className="w-2/3 pl-8">
@@ -84,7 +78,7 @@ function SyncCustomerData({ goToNextStep, markStepComplete }) {
             </div>
 
             <div className="mt-8 flex justify-between items-center">
-              <Button onClick={() => navigate("/")}>Back</Button>
+              <Button onClick={() => goToBckStep()}>Back</Button>
               <Button primary onClick={handleUploadSubmit}>
                 Next
               </Button>

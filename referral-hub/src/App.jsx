@@ -11,10 +11,6 @@ import { Toaster } from "react-hot-toast";
 import LoginPage from "./pages/Login";
 import Register from "./pages/Register";
 import Sidebar from "./layouts/Sidebar";
-import BusinessProfileSetup from "./pages/BusinessProfileSetup";
-import SyncCustomerData from "./pages/SyncCustomerData";
-import AIAgentRules from "./pages/AIAgentRules";
-import FirstCampaign from "./pages/FirstCampaign";
 import Header from "./layouts/Header";
 import Promoters from "./pages/Promoters";
 import Payouts from "./pages/Payouts";
@@ -24,6 +20,7 @@ import Leads from "./pages/Leads";
 import Dashboard from "./pages/Dashboard";
 import Campaign from "./pages/Campaign";
 import AIAgent from "./pages/AIAgent";
+import Main from "./layouts/Main";
 
 
 
@@ -37,80 +34,39 @@ const LoadingSpinner = () => (
 
 function App() {
 
-
-  const [head , setHead] = useState("");
-  const [currentStep, setCurrentStep] = useState(1);
-  const [completedSteps, setCompletedSteps] = useState([]);
+  const [firstTime, setFirstTime] = useState(true);
+  const [defaultValue, setDefaultValue] = useState("Platform Setup"); 
+  const [head , setHead] = useState(defaultValue);
+  
 
   const handlePageValue = (value) => {
     setHead(value);
   };
 
 
-  const markStepComplete = (step) => {
-    if (!completedSteps.includes(step)) {
-      setCompletedSteps([...completedSteps, step]);
-    }
-  };
-
-  const goToNextStep = () => {
-    setCurrentStep(currentStep + 1);
-  };
 
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
         <Suspense fallback={<LoadingSpinner />}>
+
+
           <div className="flex h-screen bg-gray-100">
-            <Sidebar
-              onPageValueChange={handlePageValue}
-              currentStep={currentStep}
-              completedSteps={completedSteps}
-            />
+
+            <Sidebar onPageValueChange={handlePageValue} firstTime={firstTime} />
+
             <div className="flex-1 flex flex-col">
               <Header page={head} />
-              <div className="flex-1 p-6">
+              <div className="flex-1 p-6  overflow-y-auto">
+
                 <Routes>
-                  <Route
-                    path="/setup"
-                    element={
-                      <BusinessProfileSetup
-                        goToNextStep={goToNextStep}
-                        markStepComplete={() => markStepComplete(1)}
-                      />
-                    }
-                  />
-                  <Route
-                    path="/sync-customer-data"
-                    element={
-                      <SyncCustomerData
-                        goToNextStep={goToNextStep}
-                        markStepComplete={() => markStepComplete(2)}
-                      />
-                    }
-                  />
-                  <Route
-                    path="/ai-agent-rules"
-                    element={
-                      <AIAgentRules
-                        goToNextStep={goToNextStep}
-                        markStepComplete={() => markStepComplete(3)}
-                      />
-                    }
-                  />
-                  <Route
-                    path="/first-campaign"
-                    element={
-                      <FirstCampaign
-                        markStepComplete={() => markStepComplete(4)}
-                      />
-                    }
-                  />
+
+                  <Route path="/" element={ < Main setFirstTime={setFirstTime} firstTime={firstTime} setDefaultValue={setDefaultValue}  /> }  />
+                 
                   <Route path="/login" element={<LoginPage />} />
-
-
-
                   <Route path="/register" element={<Register />} />
+
+
                   <Route path="/promoters" element={< Promoters />} />
                   <Route path="/payouts" element={<Payouts />} />
                   <Route path="/setting" element={<Setting />} />

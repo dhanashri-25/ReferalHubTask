@@ -1,55 +1,54 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Sidebar({onPageValueChange}) {
+function Sidebar({onPageValueChange , firstTime}) {
   return (
     <div className="w-64 bg-white border-r border-gray-200 h-full">
-      <div className="p-4 mb-4">
-        <Link
-          to="/setup"
-          onClick={() => onPageValueChange("Platform Setup")}
-          className="flex items-center px-4 py-2 rounded-md bg-blue-50"
-        >
-          <svg
-            className="h-5 w-5 mr-3 text-blue-600"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3 5C3 3.89543 3.89543 3 5 3H9C10.1046 3 11 3.89543 11 5V9C11 10.1046 10.1046 11 9 11H5C3.89543 11 3 10.1046 3 9V5Z"
-              stroke="#305AFF"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M13 5C13 3.89543 13.8954 3 15 3H19C20.1046 3 21 3.89543 21 5V9C21 10.1046 20.1046 11 19 11H15C13.8954 11 13 10.1046 13 9V5Z"
-              stroke="#305AFF"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M3 15C3 13.8954 3.89543 13 5 13H9C10.1046 13 11 13.8954 11 15V19C11 20.1046 10.1046 21 9 21H5C3.89543 21 3 20.1046 3 19V15Z"
-              stroke="#305AFF"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M13 15C13 13.8954 13.8954 13 15 13H19C20.1046 13 21 13.8954 21 15V19C21 20.1046 20.1046 21 19 21H15C13.8954 21 13 20.1046 13 19V15Z"
-              stroke="#305AFF"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <span className="text-blue-600">Platform Setup</span>
-        </Link>
-      </div>
+      <nav className="space-y-1 px-2 mt-20">
 
-      <nav className="space-y-1 px-2">
+        {firstTime && (
+          <Link
+            onClick={() => onPageValueChange("Platform Setup")}
+            className="flex items-center px-4 py-2 rounded-md bg-blue-50"
+          >
+            <svg
+              className="h-5 w-5 mr-3 text-blue-600"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 5C3 3.89543 3.89543 3 5 3H9C10.1046 3 11 3.89543 11 5V9C11 10.1046 10.1046 11 9 11H5C3.89543 11 3 10.1046 3 9V5Z"
+                stroke="#305AFF"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M13 5C13 3.89543 13.8954 3 15 3H19C20.1046 3 21 3.89543 21 5V9C21 10.1046 20.1046 11 19 11H15C13.8954 11 13 10.1046 13 9V5Z"
+                stroke="#305AFF"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M3 15C3 13.8954 3.89543 13 5 13H9C10.1046 13 11 13.8954 11 15V19C11 20.1046 10.1046 21 9 21H5C3.89543 21 3 20.1046 3 19V15Z"
+                stroke="#305AFF"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M13 15C13 13.8954 13.8954 13 15 13H19C20.1046 13 21 13.8954 21 15V19C21 20.1046 20.1046 21 19 21H15C13.8954 21 13 20.1046 13 19V15Z"
+                stroke="#305AFF"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span className="text-blue-600">Platform Setup</span>
+          </Link>
+        )}
         <Link
           to="/ai-agent"
           onClick={() => onPageValueChange("Ai Agents")}

@@ -3,12 +3,13 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 
 function SetupProgress({ steps, currentStep, completedSteps }) {
   return (
-    <div className="mb-8">
-      <h2 className="text-blue-600 font-medium mb-2">Get Started with ReferralHub</h2>
-      <p className="text-sm text-gray-600 mb-6">
+    <div className="mb-8 ">
+      <h2 className="text-blue-600 font-semibold mb-2">Get Started with ReferralHub</h2>
+      <p className="text-sm font-normal text-gray-600 mb-6">
         To get started with better referrals & rewards, complete your account setup in a few easy steps.
       </p>
-      <div className="space-y-4">
+      <div className='h-[1.2px] my-2 bg-gray-300 w-full'></div>
+      <div className="space-y-4 mt-8">
         {steps.map((step) => {
           const isCompleted = completedSteps.includes(step.id);
           const isInProgress = currentStep === step.id;

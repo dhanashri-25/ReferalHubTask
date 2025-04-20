@@ -216,16 +216,13 @@ const Leads = ({ promoters, setPromoters }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto py-6 px-4">
-        <div className="mb-6">
-          <h1 className="text-xl font-medium">Manage and monitor your leads</h1>
-        </div>
+    <div className="min-h-screen ">
+      <div className="max-w-7xl mx-auto py-5">
 
-        <div className="bg-white rounded-lg shadow-sm">
-          <div className="flex justify-between items-center p-4 border-b border-gray-100">
+        <div className="bg-white rounded-lg shadow-sm px-4">
+          <div className="flex justify-between items-center p-4 border-b border-gray-100 ">
             <h2 className="text-lg font-medium">Leads</h2>
-            <div className="flex items-center">
+            <div className="flex items-center ">
               <div className="relative mr-2">
                 <input
                   type="text"
@@ -285,7 +282,7 @@ const Leads = ({ promoters, setPromoters }) => {
             </div>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto px-5 border  border-gray-100 bg-gray-50 py-5 mb-10">
             <table className="min-w-full">
               <thead>
                 <tr>

@@ -89,7 +89,7 @@ function Sidebar({ onPageValueChange, firstTime }) {
           to="/ai-agent"
           onClick={(e) => handleNavClick(e,"AI Agents")}
           className={`flex items-center px-4 py-2 rounded-md ${
-            activePage === "Ai Agents" ? "bg-blue-50  border-l-4 border-blue-500" : "hover:bg-gray-50"
+            activePage === "AI Agents" ? "bg-blue-50  border-l-4 border-blue-500" : "hover:bg-gray-50"
           }`}
         >
           <svg

@@ -73,7 +73,7 @@ function App() {
 
                   <Route path="/promoters" element={< Promoters />} />
                   <Route path="/payouts" element={<Payouts />} />
-                  <Route path="/setting" element={<Setting />} />
+                  <Route path="/settings" element={<Setting />} />
                   <Route path="/help" element={<Help />} />
                   <Route path="/leads" element={<Leads />} />
                   <Route path="/" element={<Dashboard />} />

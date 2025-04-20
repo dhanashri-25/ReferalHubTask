@@ -8,7 +8,7 @@ const Register = ({ setIsLoggedIn }) => {
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const handleRegister = (e) => {
+  const handleRegister =  async (e) => {
     e.preventDefault();
     
     const newErrors = {};
@@ -25,9 +25,22 @@ const Register = ({ setIsLoggedIn }) => {
       setErrors(newErrors);
       return;
     }
-    
-    console.log('Registration data:', { email, password });
+     
+    const res = await fetch('https://api.example.com/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await res.json();
+    if (res.ok) {
+     alert(data.message || 'Login Success!');
     setIsLoggedIn(true);
+    console.log('Registration data:', { email, password });
+    }
+    
+    
   };
 
   const handleSocialRegister = (provider) => {

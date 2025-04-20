@@ -6,9 +6,20 @@ const LoginPage = ({ setIsLoggedIn }) => {
   const [magicEmail, setMagicEmail] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    const res = await fetch('https://api.example.com/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      alert(data.message || 'Login Success!');
     setIsLoggedIn(true);
+    }
   };
 
   const handleMagicLink = (e) => {

@@ -23,6 +23,7 @@ import {
   CheckCircle,
   Clock,
   ArrowUp,
+  Info,
 } from "lucide-react";
 
 const Dashboard = () => {
@@ -173,7 +174,7 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-md p-4 flex items-center">
+              <div className="bg-white rounded-md shadow-sm p-4 flex items-center">
                 <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center mr-4">
                   <Share2 className="text-orange-500" size={20} />
                 </div>
@@ -186,9 +187,9 @@ const Dashboard = () => {
                       {data.conversionRate}%
                     </h2>
                     <div className="flex gap-3">
-                      <span className="text-xs text-green-400">+15%</span>
+                      <span className="text-xs text-red-400">- 2.4%</span>
                       <span className="text-xs text-gray-400">
-                        from last month
+                        vs last month
                       </span>
                     </div>
                   </div>
@@ -196,7 +197,7 @@ const Dashboard = () => {
               </div>
 
               {/* Revenue Generated */}
-              <div className="bg-white rounded-md p-4 flex items-center">
+              <div className="bg-white rounded-md shadow-sm p-4 flex items-center">
                 <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center mr-4">
                   <DollarSign className="text-pink-500" size={20} />
                 </div>
@@ -209,7 +210,7 @@ const Dashboard = () => {
                       ${data.revenueGenerated.toLocaleString()}
                     </h2>
                     <div className="flex gap-3">
-                      <span className="text-xs text-green-400">+20%</span>
+                      <span className="text-xs text-green-400">+ 8.7%</span>
                       <span className="text-xs text-gray-400">
                         from last month
                       </span>
@@ -219,7 +220,7 @@ const Dashboard = () => {
               </div>
 
               {/* Active Campaigns */}
-              <div className="bg-white rounded-md p-4 flex items-center">
+              <div className="bg-white rounded-md shadow-sm p-4 flex items-center">
                 <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-4">
                   <Award className="text-blue-500" size={20} />
                 </div>
@@ -231,11 +232,6 @@ const Dashboard = () => {
                     <h2 className="text-xl font-bold text-gray-900 mr-2 my-1">
                       {data.activesCampaigns}
                     </h2>
-                    <div className="flex gap-3">
-                      <span className="text-xs text-gray-400">
-                        +0% from last month
-                      </span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -243,13 +239,13 @@ const Dashboard = () => {
 
             {/* Rates Overview */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-              <div className="bg-white rounded-md p-4">
-                <div className="flex items-center justify-between mb-4">
+              <div className="bg-white rounded-md shadow-sm p-4">
+                <div className="flex items-center gap-2 mb-4">
                   <p className="text-sm font-medium text-gray-700">
                     Repeat Referral Rate
                   </p>
-                  <div className="text-gray-400">
-                    <RefreshCw size={16} />
+                  <div className="text-gray-700">
+                    <Info size={16} />
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
@@ -260,7 +256,7 @@ const Dashboard = () => {
                           a 15.9155 15.9155 0 0 1 0 31.831
                           a 15.9155 15.9155 0 0 1 0 -31.831"
                         fill="none"
-                        stroke="#E5E7EB"
+                        stroke="#AFFFD3"
                         strokeWidth="3"
                       />
                       <path
@@ -274,7 +270,7 @@ const Dashboard = () => {
                       />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-lg font-semibold text-gray-700">
+                      <span className="text-lg font-semibold text-[#4ADE80]">
                         {data.repeatReferralRate}%
                       </span>
                     </div>
@@ -282,13 +278,13 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-md p-4">
-                <div className="flex items-center justify-between mb-4">
+              <div className="bg-white rounded-md shadow-sm p-4">
+                <div className="flex items-center gap-2 mb-4">
                   <p className="text-sm font-medium text-gray-700">
                     Referral Engagement Rate
                   </p>
-                  <div className="text-gray-400">
-                    <RefreshCw size={16} />
+                  <div className="text-gray-700">
+                    <Info size={16} />
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
@@ -299,7 +295,7 @@ const Dashboard = () => {
                           a 15.9155 15.9155 0 0 1 0 31.831
                           a 15.9155 15.9155 0 0 1 0 -31.831"
                         fill="none"
-                        stroke="#E5E7EB"
+                        stroke="#FFCAC3"
                         strokeWidth="3"
                       />
                       <path
@@ -307,13 +303,13 @@ const Dashboard = () => {
                           a 15.9155 15.9155 0 0 1 0 31.831
                           a 15.9155 15.9155 0 0 1 0 -31.831"
                         fill="none"
-                        stroke="#FDA4AF"
+                        stroke="#f98272"
                         strokeWidth="3"
                         strokeDasharray={`${data.referralEngagementRate}, 100`}
                       />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-lg font-semibold text-gray-700">
+                      <span className="text-lg font-semibold text-[#f98272]">
                         {data.referralEngagementRate}%
                       </span>
                     </div>
@@ -321,13 +317,13 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-md p-4">
-                <div className="flex items-center justify-between mb-4">
+              <div className="bg-white rounded-md shadow-sm p-4">
+                <div className="flex items-center gap-2 mb-4">
                   <p className="text-sm font-medium text-gray-700">
                     Churn Rate of Leads
                   </p>
-                  <div className="text-gray-400">
-                    <RefreshCw size={16} />
+                  <div className="text-gray-700">
+                    <Info size={16} />
                   </div>
                 </div>
                 <div className="flex items-center justify-center">
@@ -338,7 +334,7 @@ const Dashboard = () => {
                           a 15.9155 15.9155 0 0 1 0 31.831
                           a 15.9155 15.9155 0 0 1 0 -31.831"
                         fill="none"
-                        stroke="#E5E7EB"
+                        stroke="#c4dbff"
                         strokeWidth="3"
                       />
                       <path
@@ -346,13 +342,13 @@ const Dashboard = () => {
                           a 15.9155 15.9155 0 0 1 0 31.831
                           a 15.9155 15.9155 0 0 1 0 -31.831"
                         fill="none"
-                        stroke="#93C5FD"
+                        stroke="#4b91ff"
                         strokeWidth="3"
                         strokeDasharray={`${data.churcRateOfLeads}, 100`}
                       />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-lg font-semibold text-gray-700">
+                      <span className="text-lg font-semibold text-[#4b91ff]">
                         {data.churcRateOfLeads}%
                       </span>
                     </div>
@@ -360,15 +356,16 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-md p-4">
-                <div className="flex items-center justify-between mb-4">
+              <div className="bg-white rounded-md shadow-sm p-4">
+                <div className="flex items-center gap-2 mb-4">
                   <p className="text-sm font-medium text-gray-700">
                     Upsell Rate of Leads
                   </p>
-                  <div className="text-gray-400">
-                    <RefreshCw size={16} />
+                  <div className="text-gray-700">
+                    <Info size={16} />
                   </div>
                 </div>
+
                 <div className="flex items-center justify-center">
                   <div className="relative w-28 h-28">
                     <svg viewBox="0 0 36 36" className="w-full h-full">
@@ -377,7 +374,7 @@ const Dashboard = () => {
                           a 15.9155 15.9155 0 0 1 0 31.831
                           a 15.9155 15.9155 0 0 1 0 -31.831"
                         fill="none"
-                        stroke="#E5E7EB"
+                        stroke="#F9BFFF"
                         strokeWidth="3"
                       />
                       <path
@@ -385,13 +382,13 @@ const Dashboard = () => {
                           a 15.9155 15.9155 0 0 1 0 31.831
                           a 15.9155 15.9155 0 0 1 0 -31.831"
                         fill="none"
-                        stroke="#F0ABFC"
+                        stroke="#B113CD"
                         strokeWidth="3"
                         strokeDasharray={`${data.upsellRateOfLeads}, 100`}
                       />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-lg font-semibold text-gray-700">
+                      <span className="text-lg font-semibold text-[#b113cd]">
                         {data.upsellRateOfLeads}%
                       </span>
                     </div>
@@ -403,9 +400,9 @@ const Dashboard = () => {
             {/* Charts Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {/* Performance Chart */}
-              <div className="bg-white rounded-md p-4">
+              <div className="bg-white rounded-md shadow-sm p-4">
                 <div className="flex items-center justify-between mb-4">
-                  <p className="text-sm font-medium text-gray-700">
+                  <p className="text-xl font-medium text-gray-700">
                     Promoter Performance Over Time
                   </p>
                   <div className="relative">
@@ -545,7 +542,7 @@ const Dashboard = () => {
             {/* Top Performing Channels */}
 
             {/* Recent Activities */}
-            <div className="bg-white rounded-md p-4 mb-6">
+            <div className="bg-white rounded-md shadow-sm p-4 mb-6">
               <p className="text-sm font-medium text-gray-700 mb-4">
                 Recent Activities
               </p>
@@ -582,7 +579,7 @@ const Dashboard = () => {
             </div>
 
             {/* Leaderboard Table */}
-            <div className="bg-white rounded-md p-4">
+            <div className="bg-white rounded-md shadow-sm p-4">
               <p className="text-sm font-medium text-gray-700 mb-4">
                 Leaderboard Table View
               </p>

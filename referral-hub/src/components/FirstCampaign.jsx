@@ -282,7 +282,7 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
 
                   <button
                     type="button"
-                    className="bg-gradient-to-r from-blue-500 to-blue-200 text-white text-sm font-medium py-4 px-4 rounded-md  text-center w-full"
+                    className="bg-gradient-to-r from-blue-500 to-blue-200 text-white text-md font-medium py-3 px-4 rounded-xl  text-center w-full"
                   > <div className="flex text-center justify-center rounded-lg">
                       <span><PlusIcon className="h-6 w-6 mr-1"  /></span>
                       Add Action
@@ -551,7 +551,7 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
 
                   <button
                     type="button"
-                    className="bg-gradient-to-r from-blue-500 to-blue-200 text-white text-sm font-medium py-4 px-4 rounded-md  text-center w-full"
+                    className="bg-gradient-to-r from-blue-500 to-blue-200 text-white text-md font-medium py-3 px-4 rounded-xl  text-center w-full"
                   > <div className="flex text-center justify-center rounded-lg">
                       <span><PlusIcon className="h-6 w-6 mr-1"  /></span>
                       Add Action
@@ -572,7 +572,7 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
              
 
               <div className="mt-8">
-                <Button primary type="submit" className="bg-gradient-to-r from-blue-500 to-blue-200 text-white text-sm font-medium py-4 px-4 rounded-md  text-center w-full">
+                <Button primary type="submit" className="bg-gradient-to-r from-blue-500 to-blue-200 text-white text-lg font-medium py-3 px-4 rounded-xl  text-center w-full">
                   Launch
                 </Button>
               </div>

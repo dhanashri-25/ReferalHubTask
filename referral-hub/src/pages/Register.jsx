@@ -109,7 +109,7 @@ const Register = ({ setIsLoggedIn }) => {
           
           <button
             type="submit"
-            className="w-full py-2bg-gradient-to-r from-blue-500 to-blue-300 text-white rounded-md hover:bg-blue-600"
+            className="w-full py-2 bg-gradient-to-r from-blue-500 to-blue-300 text-white rounded-md hover:bg-blue-600"
           >
             Register
           </button>

@@ -9,14 +9,14 @@ function SetupProgress({ steps, currentStep, completedSteps }) {
         To get started with better referrals & rewards, complete your account setup in a few easy steps.
       </p>
       <div className='h-[1.2px] my-2 bg-gray-300 w-full'></div>
-      <div className="space-y-4 mt-8">
+      <div className="space-y-4 my-8">
         {steps.map((step) => {
           const isCompleted = completedSteps.includes(step.id);
           const isInProgress = currentStep === step.id;
           
           return (
-            <div key={step.id} className="flex items-center">
-              <div className="flex-shrink-0 mr-3">
+            <div key={step.id} className="flex items-center mb-8 ">
+              <div className="flex-shrink-0 mr-3 ">
                 {isCompleted ? (
                   <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
                     <CheckCircleIcon className="h-6 w-6 text-white" />

@@ -31,7 +31,7 @@ function SyncCustomerData({ goToNextStep , goToBckStep }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className=" mx-auto">
       <div className="bg-white p-8 rounded-lg shadow-sm">
         <div className="flex">
           <div className="w-1/3 bg-gray-100 p-8">

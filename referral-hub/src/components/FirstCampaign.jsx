@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SetupProgress from "../components/SetupProgress";
 import Button from "../components/Button";
 import { PlusIcon } from "@heroicons/react/24/outline";
+import { Clock2, LeafyGreen, MessageSquare } from 'lucide-react';
 
 function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
   const [campaign, setCampaign] = useState({
@@ -85,15 +86,15 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
           </div>
           
           <div className="w-2/3 pl-8">
-            <h2 className="text-xl font-medium mb-6">Create New Campaign</h2>
-            <p className="text-sm text-gray-600 mb-6">
+            <h2 className="text-xl font-medium  mb-1">Create New Campaign</h2>
+            <p className="text-sm text-gray-400 mb-6">
               Create a new referral campaign in just few steps.
             </p>
             <div className='h-[1.2px] my-4 bg-gray-300 w-full'></div>
 
             <form onSubmit={handleSubmit}>
 
-              <div className="mb-6 bg-gray-50 rounded-lg my-4">
+              <div className="mb-6 bg-gray-50 rounded-lg my-8">
                 <label className=" flex text-sm bg-gray-100 rounded-t-lg rounded-b-sm font-medium p-4">
                   Campaign Name
                 </label>
@@ -109,7 +110,7 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                 </div>
               </div>
 
-              <div className="mb-6 bg-gray-50 rounded-lg my-4">
+              <div className="mb-6 bg-gray-50 rounded-lg my-8">
                 <h3 className="flex text-lg bg-gray-100 rounded-t-lg rounded-b-sm font-medium p-4">Promoter Settings</h3>
                 <div className="p-4">
                 <div className="grid grid-cols-2 gap-4 mb-4">
@@ -118,7 +119,7 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                       Reward Type <span className="text-red-500 text-md">*</span>
                     </label>
                     <div className="bg-blue-100 text-blue-600 text-center rounded-md py-2 px-4 text-md font-semibold">
-                    Reward Type <span className="text-red-500 text-md">*</span>
+                    Points
                       <br />
                       <span className="text-sm">( $1 is equivalent to 10 points)</span>
                     </div>
@@ -138,8 +139,8 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                   </div>
                 </div>
 
-                <div className="mb-4">
-                  <label className="block text-gray-500  font-medium mb-2">
+                <div className="my-8">
+                  <label className="block text-gray-500  font-medium mb-4">
                     Promoter Message<span className="text-red-500 text-md">*</span>
                   </label>
                   <textarea
@@ -152,40 +153,38 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                   />
                 </div>
 
-                <div className="bg-blue-50 p-4 rounded-md mb-4">
-                  <h4 className="text-sm font-medium mb-2">
+                <div className="bg-gray-100 p-4 rounded-md mb-4">
+
+
+                  <h4 className="text-lg font-semibold mb-2">
                     Follow-Up Strategy<span className="text-red-500 text-md">*</span>
                   </h4>
+                  <div className="p-12 flex flex-col ">
 
-                  <div className="mb-2 flex items-center">
-                    <input
-                      type="checkbox"
-                      id="promoter-sms"
-                      checked={campaign.promoterFollowUp.useSms}
-                      onChange={() =>
-                        handleCheckboxChange("promoterFollowUp", "useSms")
-                      }
-                      className="mr-2"
-                    />
-                    <label htmlFor="promoter-sms" className="text-sm">
-                      SMS
+                  <div className=" px-30">
+                    <label htmlFor="promoter-sms" className=" items-start flex text-md bg-white rounded-md py-3 px-4">
+
+                    
+                    <p className="bg-green-100  rounded-sm"><MessageSquare color="green" size={20} />  </p>
+                    <span className="ml-2">SMS</span>
+                    </label>
+
+                    <div className="w-[1px] h-4 bg-gray-400 mx-auto"></div>
+                    <div className="relative w-[1px] h-4 bg-gray-400 mx-auto after:content-[''] after:absolute after:top-full after:left-1/2 after:-ml-1 after:border-4 after:border-transparent after:border-t-gray-400"></div>
+
+                    <label htmlFor="promoter-wait" className="mt-1 items-start flex text-md bg-white rounded-md py-3 px-4">
+                    <p className="bg-blue-100 rounded-sm "><Clock2 color="blue" size={20} /> </p>
+                    <span className="ml-2">Wait-5 Days</span>
                     </label>
                   </div>
 
-                  <div className="mb-2 flex items-center">
-                    <input
-                      type="checkbox"
-                      id="promoter-wait"
-                      className="mr-2"
-                    />
-                    <label htmlFor="promoter-wait" className="text-sm">
-                      Wait 3 days
-                    </label>
-                  </div>
+                  <div className="w-[1px] h-4  bg-gray-400 mx-auto"></div>
+                    <div className="relative w-[1px] h-4 bg-gray-400 mx-auto after:content-[''] after:absolute after:top-full after:left-1/2 after:-ml-1 after:border-4 after:border-transparent after:border-t-gray-400"></div>
 
-                  <div className="mb-2">
-                    <p className="text-xs mb-1">Action Type</p>
-                    <div className="flex">
+                  <div className="mb-2 bg-white p-6 mx-20 mt-1 items-center rounded-lg">
+                    <p className="text-sm font-sm mb-1 ">Action Type</p>
+                    <div className='h-[.5px] my-4 bg-gray-300 w-full'></div>
+                    <div className="flex justify-between mx-2 mr-8 my-4 ">
                       <div className="flex items-center mr-4">
                         <input
                           type="radio"
@@ -201,9 +200,9 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                               "Email"
                             )
                           }
-                          className="mr-1"
+                          className="mr-1 text-sm font-semibold"
                         />
-                        <label htmlFor="promoter-email" className="text-xs">
+                        <label htmlFor="promoter-email" className="text-sm font-lg">
                           Email
                         </label>
                       </div>
@@ -222,12 +221,13 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                               "SMS"
                             )
                           }
-                          className="mr-1"
+                          className="text-sm font-semibold mr-1"
                         />
                         <label
                           htmlFor="promoter-sms-action"
-                          className="text-xs"
+                          className="text-sm font-lg"
                         >
+                          
                           SMS
                         </label>
                       </div>
@@ -247,90 +247,103 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                               "Notification"
                             )
                           }
-                          className="mr-1"
+                          className="text-sm font-semibold mr-1"
                         />
                         <label
                           htmlFor="promoter-notification"
-                          className="text-xs"
+                          className="text-sm font-lg"
                         >
-                          Web Notification
+                          Wait Duration
                         </label>
                       </div>
                     </div>
-                  </div>
+
+                  <div className='h-[.5px] my-4 bg-gray-300 w-full'></div>
 
                   <div className="mb-2">
-                    <label className="block text-xs mb-1">Phone Number</label>
-                    <select className="border border-gray-300 rounded-md text-xs p-1 w-full">
+                    <label className="text-sm my-4">Phone Number</label>
+                    <select className="border border-gray-300 rounded-md text-xs text-gray-400  w-full mt-4 p-3">
                       <option value="">Select</option>
                     </select>
                   </div>
 
+                  <div className='h-[.5px] my-4 mt-6 bg-gray-300 w-full'></div>
+
                   <div className="mb-2">
-                    <label className="block text-xs mb-1">
+                    <label className="text-sm my-4">
                       Follow-Up Message
                     </label>
                     <textarea
                       placeholder="Enter message..."
-                      className="border border-gray-300 rounded-md text-xs p-1 w-full"
-                      rows="2"
+                      className="border border-gray-300 rounded-md text-xs text-gray-400  w-full mt-4 p-3"
+                      rows="4"
                     />
                   </div>
 
                   <button
                     type="button"
-                    className="bg-blue-500 text-white text-xs py-1 px-3 rounded-md flex items-center"
-                  >
-                    <PlusIcon className="h-3 w-3 mr-1" /> Add Action
+                    className="bg-gradient-to-r from-blue-500 to-blue-200 text-white text-sm font-medium py-4 px-4 rounded-md  text-center w-full"
+                  > <div className="flex text-center justify-center rounded-lg">
+                      <span><PlusIcon className="h-6 w-6 mr-1"  /></span>
+                      Add Action
+                  </div>
+                    
                   </button>
+
+                 </div>
+                </div>
+
+
                 </div>
                 </div>
               </div>
 
-              <div className="border-t border-gray-200 pt-6 mb-6">
-                <h3 className="text-lg font-medium mb-4">Leads Settings</h3>
-
+              <div className="mb-6 bg-gray-50 rounded-lg my-8">
+                <h3 className="flex text-lg bg-gray-100 rounded-t-lg rounded-b-sm font-medium p-4">Leads Settings</h3>
+                <div className="p-4">
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-sm font-medium mb-2">
-                      Reward Type*
+                    <label className="block text-gray-500  font-medium mb-2">
+                      Reward Type <span className="text-red-500 text-md">*</span>
                     </label>
-                    <div className="bg-blue-100 text-blue-700 rounded-md py-2 px-4 text-sm font-medium">
-                      Discount
+                    <div className="bg-blue-100 text-blue-600 text-center rounded-md py-5 px-4 text-md font-semibold">
+                    Discount <span className="text-red-500 text-md">*</span>
+                      
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">
-                      Reward Value*
+                    <label className="block text-gray-500  font-medium mb-2">
+                    Reward Value <span className="text-red-500 text-md">*</span>
                     </label>
                     <input
                       type="text"
-                      name="leadRewardValue"
-                      value={campaign.leadRewardValue}
+                      name="promoterRewardValue"
+                      value={campaign.promoterRewardValue}
                       onChange={handleInputChange}
-                      placeholder="e.g., 20%"
-                      className="w-full border border-gray-300 rounded-md p-2 text-sm"
+                      placeholder="e.g., 20% "
+                      className="w-full border border-gray-300 rounded-md p-5 text-sm"
                     />
                   </div>
                 </div>
 
-                <div className="mb-4">
-                  <label className="block text-sm font-medium mb-2">
-                    Referral Message*
+                <div className="my-8">
+                  <label className="block text-gray-500  font-medium mb-4">
+                    Reffered Message<span className="text-red-500 text-md">*</span>
                   </label>
                   <textarea
-                    name="leadMessage"
-                    value={campaign.leadMessage}
+                    name="promoterMessage"
+                    value={campaign.promoterMessage}
                     onChange={handleInputChange}
-                    placeholder=""
+                    placeholder='e.g., "Hey! Share this with your friends and get $10 for each successful signup!"'
                     className="w-full border border-gray-300 rounded-md p-2 text-sm"
-                    rows="3"
+                    rows="5"
                   />
                 </div>
 
                 <div className="mb-4">
                   <label className="text-sm font-medium mb-2 flex items-center">
-                    Form Fields*
+                    Form Fields<span className="text-red-500 text-md">*</span>
+                    
                     <span className="ml-1 text-gray-400 text-xs">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -349,7 +362,7 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                     </span>
                   </label>
 
-                  <div className="flex flex-wrap">
+                  <div className="flex flex-wrap justify-between mx-2">
                     <div className="mr-4 mb-2">
                       <input
                         type="checkbox"
@@ -358,9 +371,9 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                         onChange={() =>
                           handleCheckboxChange("formFields", "fullName")
                         }
-                        className="mr-1"
+                        className="h-4 w-4 mr-2"
                       />
-                      <label htmlFor="field-name" className="text-sm">
+                      <label htmlFor="field-name" className="text-md">
                         Full Name
                       </label>
                     </div>
@@ -372,9 +385,9 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                         onChange={() =>
                           handleCheckboxChange("formFields", "emailAddress")
                         }
-                        className="mr-1"
+                        className="h-4 w-4 mr-4"
                       />
-                      <label htmlFor="field-email" className="text-sm">
+                      <label htmlFor="field-email" className="text-md">
                         Email Address
                       </label>
                     </div>
@@ -386,9 +399,9 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                         onChange={() =>
                           handleCheckboxChange("formFields", "phoneNumber")
                         }
-                        className="mr-1"
+                        className="h-4 w-4 mr-4"
                       />
-                      <label htmlFor="field-phone" className="text-sm">
+                      <label htmlFor="field-phone" className="text-md">
                         Phone Number
                       </label>
                     </div>
@@ -400,136 +413,166 @@ function FirstCampaign({ markStepComplete , setFirstTime , setDefaultValue  }) {
                         onChange={() =>
                           handleCheckboxChange("formFields", "agree")
                         }
-                        className="mr-1"
+                        className="h-4 w-4 mr-4"
                       />
-                      <label htmlFor="field-agree" className="text-sm">
+                      <label htmlFor="field-agree" className="text-md">
                         Agree
                       </label>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-blue-50 p-4 rounded-md mb-4">
-                  <h4 className="text-sm font-medium mb-2">
-                    Follow-Up Strategy*
+                <div className="bg-gray-100 p-4 rounded-md mb-4">
+
+
+                  <h4 className="text-lg font-semibold mb-2">
+                    Follow-Up Strategy<span className="text-red-500 text-md">*</span>
                   </h4>
+                  <div className="p-12 flex flex-col ">
 
-                  <div className="mb-2 flex items-center">
-                    <input
-                      type="checkbox"
-                      id="lead-sms"
-                      checked={campaign.leadFollowUp.useSms}
-                      onChange={() =>
-                        handleCheckboxChange("leadFollowUp", "useSms")
-                      }
-                      className="mr-2"
-                    />
-                    <label htmlFor="lead-sms" className="text-sm">
-                      SMS
+                  <div className=" px-30">
+                    <label htmlFor="promoter-sms" className=" items-start flex text-md bg-white rounded-md py-3 px-4">
+
+                    
+                    <p className="bg-green-100  rounded-sm"><MessageSquare color="green" size={20} />  </p>
+                    <span className="ml-2">SMS</span>
+                    </label>
+
+                    <div className="w-[1px] h-4 bg-gray-400 mx-auto"></div>
+                    <div className="relative w-[1px] h-4 bg-gray-400 mx-auto after:content-[''] after:absolute after:top-full after:left-1/2 after:-ml-1 after:border-4 after:border-transparent after:border-t-gray-400"></div>
+
+                    <label htmlFor="promoter-wait" className="mt-1 items-start flex text-md bg-white rounded-md py-3 px-4">
+                    <p className="bg-blue-100 rounded-sm "><Clock2 color="blue" size={20} /> </p>
+                    <span className="ml-2">Wait-5 Days</span>
                     </label>
                   </div>
 
-                  <div className="mb-2 flex items-center">
-                    <input type="checkbox" id="lead-wait" className="mr-2" />
-                    <label htmlFor="lead-wait" className="text-sm">
-                      Wait 3 days
-                    </label>
-                  </div>
+                  <div className="w-[1px] h-4  bg-gray-400 mx-auto"></div>
+                    <div className="relative w-[1px] h-4 bg-gray-400 mx-auto after:content-[''] after:absolute after:top-full after:left-1/2 after:-ml-1 after:border-4 after:border-transparent after:border-t-gray-400"></div>
 
-                  <div className="mb-2">
-                    <p className="text-xs mb-1">Action Type</p>
-                    <div className="flex">
+                  <div className="mb-2 bg-white p-6 mx-20 mt-1 items-center rounded-lg">
+                    <p className="text-sm font-sm mb-1 ">Action Type</p>
+                    <div className='h-[.5px] my-4 bg-gray-300 w-full'></div>
+                    <div className="flex justify-between mx-2 mr-8 my-4 ">
                       <div className="flex items-center mr-4">
                         <input
                           type="radio"
-                          id="lead-email"
-                          name="leadActionType"
-                          checked={campaign.leadFollowUp.actionType === "Email"}
+                          id="promoter-email"
+                          name="promoterActionType"
+                          checked={
+                            campaign.promoterFollowUp.actionType === "Email"
+                          }
                           onChange={() =>
                             handleFollowUpChange(
-                              "leadFollowUp",
+                              "promoterFollowUp",
                               "actionType",
                               "Email"
                             )
                           }
-                          className="mr-1"
+                          className="h-4 w-4 mr-4 text-sm font-semibold"
                         />
-                        <label htmlFor="lead-email" className="text-xs">
+                        <label htmlFor="promoter-email" className="text-sm font-lg">
                           Email
                         </label>
                       </div>
                       <div className="flex items-center mr-4">
                         <input
                           type="radio"
-                          id="lead-sms-action"
-                          name="leadActionType"
-                          checked={campaign.leadFollowUp.actionType === "SMS"}
+                          id="promoter-sms-action"
+                          name="promoterActionType"
+                          checked={
+                            campaign.promoterFollowUp.actionType === "SMS"
+                          }
                           onChange={() =>
                             handleFollowUpChange(
-                              "leadFollowUp",
+                              "promoterFollowUp",
                               "actionType",
                               "SMS"
                             )
                           }
-                          className="mr-1"
+                          className="text-sm font-semibold mr-1"
                         />
-                        <label htmlFor="lead-sms-action" className="text-xs">
+                        <label
+                          htmlFor="promoter-sms-action"
+                          className="text-sm font-lg"
+                        >
+                          
                           SMS
                         </label>
                       </div>
                       <div className="flex items-center">
                         <input
                           type="radio"
-                          id="lead-notification"
-                          name="leadActionType"
+                          id="promoter-notification"
+                          name="promoterActionType"
                           checked={
-                            campaign.leadFollowUp.actionType === "Notification"
+                            campaign.promoterFollowUp.actionType ===
+                            "Notification"
                           }
                           onChange={() =>
                             handleFollowUpChange(
-                              "leadFollowUp",
+                              "promoterFollowUp",
                               "actionType",
                               "Notification"
                             )
                           }
-                          className="mr-1"
+                          className="text-sm font-semibold mr-1"
                         />
-                        <label htmlFor="lead-notification" className="text-xs">
-                          Web Notification
+                        <label
+                          htmlFor="promoter-notification"
+                          className="text-sm font-lg"
+                        >
+                          Wait Duration
                         </label>
                       </div>
                     </div>
-                  </div>
+
+                  <div className='h-[.5px] my-4 bg-gray-300 w-full'></div>
 
                   <div className="mb-2">
-                    <label className="block text-xs mb-1">Phone Number</label>
-                    <select className="border border-gray-300 rounded-md text-xs p-1 w-full">
+                    <label className="text-sm my-4">Phone Number</label>
+                    <select className="border border-gray-300 rounded-md text-xs text-gray-400  w-full mt-4 p-3">
                       <option value="">Select</option>
                     </select>
                   </div>
 
+                  <div className='h-[.5px] my-4 mt-6 bg-gray-300 w-full'></div>
+
                   <div className="mb-2">
-                    <label className="block text-xs mb-1">
+                    <label className="text-sm my-4">
                       Follow-Up Message
                     </label>
                     <textarea
                       placeholder="Enter message..."
-                      className="border border-gray-300 rounded-md text-xs p-1 w-full"
-                      rows="2"
+                      className="border border-gray-300 rounded-md text-xs text-gray-400  w-full mt-4 p-3"
+                      rows="4"
                     />
                   </div>
 
                   <button
                     type="button"
-                    className="bg-blue-500 text-white text-xs py-1 px-3 rounded-md flex items-center"
-                  >
-                    <PlusIcon className="h-3 w-3 mr-1" /> Add Action
+                    className="bg-gradient-to-r from-blue-500 to-blue-200 text-white text-sm font-medium py-4 px-4 rounded-md  text-center w-full"
+                  > <div className="flex text-center justify-center rounded-lg">
+                      <span><PlusIcon className="h-6 w-6 mr-1"  /></span>
+                      Add Action
+                  </div>
+                    
                   </button>
+
+                 </div>
+                </div>
+
+
+                </div>
                 </div>
               </div>
 
+              
+
+             
+
               <div className="mt-8">
-                <Button primary type="submit" className="w-full">
+                <Button primary type="submit" className="bg-gradient-to-r from-blue-500 to-blue-200 text-white text-sm font-medium py-4 px-4 rounded-md  text-center w-full">
                   Launch
                 </Button>
               </div>

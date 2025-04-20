@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import SetupProgress from '../components/SetupProgress';
 import Button from '../components/Button';
+import { ToggleLeft , ToggleRight } from 'lucide-react';
 
-function AIAgentRules({ goToNextStep  , goToBckStep }) {
+function AIAgentRules({ goToNextStep, goToBckStep }) {
   const [settings, setSettings] = useState({
     toneOfCommunication: '',
     responseStyle: '',
     autoOfferHelp: false,
     userInitiatedOnly: false
   });
+
+  const [left1, setLeft1] = useState(true); 
+  const [left2, setLeft2] = useState(true); 
 
   const steps = [
     { id: 1, name: 'Set Up Business Profile' },
@@ -17,14 +21,14 @@ function AIAgentRules({ goToNextStep  , goToBckStep }) {
     { id: 4, name: 'Set Up First Campaign' },
   ];
 
+ 
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setSettings({ ...settings, [name]: value });
   };
 
-  const handleToggleChange = (name) => {
-    setSettings({ ...settings, [name]: !settings[name] });
-  };
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,9 +36,10 @@ function AIAgentRules({ goToNextStep  , goToBckStep }) {
   };
 
   return (
-    <div className=" mx-auto">
+    <div className="p-6 mx-auto">
       <div className="bg-white p-8 rounded-lg shadow-sm">
         <div className="flex">
+          {/* Sidebar Progress */}
           <div className="w-1/3 bg-gray-100 p-8">
             <SetupProgress 
               steps={steps} 
@@ -42,17 +47,19 @@ function AIAgentRules({ goToNextStep  , goToBckStep }) {
               completedSteps={[1, 2]} 
             />
           </div>
+
           <div className="w-2/3 pl-8">
-            <h2 className="text-xl font-medium mb-6">Set Up AI Agent Rules</h2>
-            
+            <h2 className="text-xl text-center font-medium mb-6">Set Up AI Agent Rules</h2>
             <form onSubmit={handleSubmit}>
+
+              {/* Tone of Communication */}
               <div className="mb-6">
-                <label className="block text-sm font-medium mb-2">Tone of Communication</label>
+                <label className="block text-md font-sm mb-2">Tone of Communication</label>
                 <select 
                   name="toneOfCommunication"
                   value={settings.toneOfCommunication}
                   onChange={handleInputChange}
-                  className="w-full border border-gray-300 rounded-md p-2 text-sm"
+                  className="w-full border text-gray-400 border-gray-300 rounded-md p-2 text-sm"
                 >
                   <option value="">Select</option>
                   <option value="friendly">Friendly</option>
@@ -61,14 +68,15 @@ function AIAgentRules({ goToNextStep  , goToBckStep }) {
                   <option value="casual">Casual</option>
                 </select>
               </div>
-              
+
+              {/* Response Style */}
               <div className="mb-6">
-                <label className="block text-sm font-medium mb-2">Response Style</label>
+                <label className="block text-md font-sm mb-2">Response Style</label>
                 <select 
                   name="responseStyle"
                   value={settings.responseStyle}
                   onChange={handleInputChange}
-                  className="w-full border border-gray-300 rounded-md p-2 text-sm"
+                  className="w-full border text-gray-400 border-gray-300 rounded-md p-2 text-sm"
                 >
                   <option value="">Select</option>
                   <option value="concise">Concise</option>
@@ -76,71 +84,49 @@ function AIAgentRules({ goToNextStep  , goToBckStep }) {
                   <option value="stepByStep">Step-by-step</option>
                 </select>
               </div>
-              
+
+              {/* Auto-offer Help Toggle */}
               <div className="mb-6">
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-sm font-medium">Auto-offer help</h3>
+                    <h3 className="text-md font-medium">Auto-offer help</h3>
                     <p className="text-xs text-gray-500">AI gives suggestions automatically when user lands on a page.</p>
                   </div>
-                  <div className="relative inline-block w-10 mr-2 align-middle select-none">
-                    <input 
-                      type="checkbox"
-                      checked={settings.autoOfferHelp}
-                      onChange={() => handleToggleChange('autoOfferHelp')}
-                      className="hidden"
-                      id="toggle-auto-help"
-                    />
-                    <label 
-                      htmlFor="toggle-auto-help"
-                      className={`block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer ${
-                        settings.autoOfferHelp ? 'bg-blue-500' : ''
-                      }`}
-                    >
-                      <span 
-                        className={`block h-6 w-6 rounded-full bg-white transform transition-transform ${
-                          settings.autoOfferHelp ? 'translate-x-4' : 'translate-x-0'
-                        }`}
-                      ></span>
-                    </label>
-                  </div>
+                  {left1 ? (
+                      <ToggleLeft color='gray'  size={30} onClick={() => setLeft1(!left1)} />
+                  ): (
+                      <ToggleRight color='blue' size={30}  onClick={() => setLeft1(!left1)}/>
+                  )}
+                  
                 </div>
               </div>
-              
+
               <div className="mb-6">
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-sm font-medium">User-initiated only</h3>
+                    <h3 className="text-md font-medium">User-initiated only</h3>
                     <p className="text-xs text-gray-500">AI only responds when clicked or messaged.</p>
                   </div>
-                  <div className="relative inline-block w-10 mr-2 align-middle select-none">
-                    <input 
-                      type="checkbox"
-                      checked={settings.userInitiatedOnly}
-                      onChange={() => handleToggleChange('userInitiatedOnly')}
-                      className="hidden"
-                      id="toggle-user-initiated"
-                    />
-                    <label 
-                      htmlFor="toggle-user-initiated"
-                      className={`block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer ${
-                        settings.userInitiatedOnly ? 'bg-blue-500' : ''
-                      }`}
-                    >
-                      <span 
-                        className={`block h-6 w-6 rounded-full bg-white transform transition-transform ${
-                          settings.userInitiatedOnly ? 'translate-x-4' : 'translate-x-0'
-                        }`}
-                      ></span>
-                    </label>
-                  </div>
+                  {left2 ? (
+                      <ToggleLeft color='gray'  size={30} onClick={() => setLeft2(!left2)} />
+                  ): (
+                      <ToggleRight color='blue' size={30} onClick={() => setLeft2(!left2)} />
+                  )}
+                  
+                
                 </div>
               </div>
-              
+
               <div className="mt-8 flex justify-between items-center">
                 <Button onClick={() => goToBckStep()}>Back</Button>
-                <Button primary type="submit">Next</Button>
+                <button 
+                  type="submit"
+                  className="bg-gradient-to-r from-blue-500 to-blue-200 text-white text-md font-medium py-2 px-4 rounded-lg w-[30%]"
+                >
+                  Next
+                </button>
               </div>
+              
             </form>
           </div>
         </div>

@@ -52,8 +52,8 @@ function BusinessProfileSetup({ goToNextStep }) {
             </p>
             
             <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Business Logo</label>
+              <div className="mb-4 flex gap-4">
+                <label className="block text-sm font-medium mt-2">Business Logo</label>
                 <button className="px-4 py-2 bg-white border border-gray-300 rounded-md text-sm text-gray-700 hover:bg-gray-50">
                   Choose Image
                 </button>
@@ -212,8 +212,8 @@ function BusinessProfileSetup({ goToNextStep }) {
                 </div>
               </div>
               
-              <div className="mt-8 flex justify-between items-center">
-                <Button primary type="submit">Next</Button>
+              <div className="mt-8 flex justify-center items-center">
+                <Button primary type="submit" className= "bg-gradient-to-r from-blue-500 to-blue-200 text-white text-md font-medium py-2 px-4 rounded-lg  text-center w-[60%]">Next</Button>
               </div>
             </form>
           </div>

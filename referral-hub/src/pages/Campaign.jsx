@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Leads = () => {
+const Campaign = () => {
   return (
     <div>
-       Leads
+      Campaign
     </div>
   )
 }
 
-export default Leads
+export default Campaign

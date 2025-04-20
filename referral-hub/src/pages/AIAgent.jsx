@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Leads = () => {
+const AIAgent = () => {
   return (
     <div>
-       Leads
+      Ai
     </div>
   )
 }
 
-export default Leads
+export default AIAgent

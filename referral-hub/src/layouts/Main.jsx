@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Leads = () => {
+const Main = () => {
   return (
     <div>
-       Leads
+      Main
     </div>
   )
 }
 
-export default Leads
+export default Main

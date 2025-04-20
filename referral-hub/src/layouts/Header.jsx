@@ -1,10 +1,10 @@
 import React from 'react';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 
-function Header() {
+function Header({page}) {
   return (
     <div className="bg-white border-b border-gray-200 p-4 flex justify-between items-center">
-      <h1 className="text-xl font-medium">Platform Setup</h1>
+      <h1 className="text-xl font-medium">{page}</h1>
       <div className="flex items-center">
         <ArrowPathIcon className="h-5 w-5 text-gray-400 mr-2" />
         <div className="flex items-center">

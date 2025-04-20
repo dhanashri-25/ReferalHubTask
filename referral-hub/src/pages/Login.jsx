@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
-import { SiX } from "react-icons/si";
-import { Eye, EyeOff } from "lucide-react";
+
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);

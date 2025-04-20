@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({onPageValueChange}) {
   return (
     <div className="w-64 bg-white border-r border-gray-200 h-full">
       <div className="p-4 mb-4">
         <Link
-          to="/"
+          to="/setup"
+          onClick={() => onPageValueChange("Platform Setup")}
           className="flex items-center px-4 py-2 rounded-md bg-blue-50"
         >
           <svg
@@ -51,6 +52,7 @@ function Sidebar() {
       <nav className="space-y-1 px-2">
         <Link
           to="/ai-agent"
+          onClick={() => onPageValueChange("Ai Agents")}
           className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
         >
           <svg
@@ -77,7 +79,8 @@ function Sidebar() {
           <span>AI Agent</span>
         </Link>
         <Link
-          to="/dashboard"
+          to="/"
+          onClick={() => onPageValueChange("Dashboard")}
           className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
         >
           <svg
@@ -98,6 +101,7 @@ function Sidebar() {
         </Link>
         <Link
           to="/campaign"
+          onClick={() => onPageValueChange("Create & Manage Referral Campaigns")}
           className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
         >
           <svg
@@ -118,6 +122,7 @@ function Sidebar() {
         </Link>
         <Link
           to="/promoters"
+          onClick={() => onPageValueChange("Manage & Monitior Your Promoters Referral Activities")} 
           className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
         >
           <svg
@@ -138,6 +143,7 @@ function Sidebar() {
         </Link>
         <Link
           to="/leads"
+          onClick={() => onPageValueChange("Manage & Monitior Your Leads")}
           className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
         >
           <svg
@@ -158,6 +164,7 @@ function Sidebar() {
         </Link>
         <Link
           to="/payouts"
+          onClick={() => onPageValueChange("Manage & Monitior Your Payouts")}
           className="flex items-center px-4 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
         >
           <svg
@@ -181,6 +188,7 @@ function Sidebar() {
       <div className="absolute bottom-0 w-64 border-t border-gray-200">
         <Link
           to="/settings"
+          onClick={() => onPageValueChange("Settings")}
           className="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"
         >
           <svg
@@ -204,10 +212,13 @@ function Sidebar() {
               strokeLinejoin="round"
             />
           </svg>
-          <span>Settings</span>
+          <Link
+           to="/setting"
+          >Settings</Link>
         </Link>
         <Link
           to="/help"
+          onClick={() => onPageValueChange("")}
           className="flex items-center px-6 py-3 text-gray-600 hover:bg-gray-50"
         >
           <svg

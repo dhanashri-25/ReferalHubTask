@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
-import { SiX } from "react-icons/si";
-import { Eye, EyeOff, MessageCircle } from "lucide-react";
+
 
 export default function Register() {
   const [showPwd, setShowPwd] = useState(false);
@@ -10,9 +7,7 @@ export default function Register() {
 
   return (
     <div className="min-h-screen bg-gray-100 relative overflow-hidden">
-      
-
-      
+    
 
       <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md mx-auto mt-12 z-10 relative">
         <h2 className="text-xl font-semibold text-gray-700 text-center mb-6">

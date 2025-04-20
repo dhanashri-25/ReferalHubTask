@@ -1,115 +1,162 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
+const LoginPage = ({ setIsLoggedIn }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [magicEmail, setMagicEmail] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
 
-export default function LoginPage() {
-  const [showPassword, setShowPassword] = useState(false);
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setIsLoggedIn(true);
+  };
+
+  const handleMagicLink = (e) => {
+    e.preventDefault();
+    alert(`Magic link sent to ${magicEmail}`);
+  };
+
+  const handleSocialLogin = (provider) => {
+    console.log(`Logging in with ${provider}`);
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 relative overflow-hidden">
-      
-
-      <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md z-10">
-        <h2 className="text-xl font-semibold text-gray-700 text-center mb-6">
-          Login to ReferralHub
-        </h2>
-
-        {/* OAuth Button */}
-        <button className="flex items-center justify-center w-full mb-4 py-2 px-4 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition">
+    <div className="flex items-center justify-center min-h-screen ">
+      <div className="relative w-full max-w-md p-8 bg-white rounded-lg shadow-md">
+        <h1 className="text-xl font-medium text-center text-gray-800 mb-6">Login to ReferralHub</h1>
+        
+        <button 
+          className="w-full py-2 px-4 border border-gray-300 rounded-md text-sm font-medium text-blue-600 mb-6"
+          onClick={() => handleSocialLogin('Google/Microsoft')}
+        >
           Continue with Google/Microsoft
         </button>
-
-        {/* Magic Link */}
-        <div className="mb-4">
-          <label className="block text-gray-600 mb-1">Magic Link Login</label>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          />
+        
+        {/* Magic Link Login */}
+        <div className="mb-6">
+          <h2 className="text-sm font-medium text-gray-700 mb-2">Magic Link Login</h2>
+          <form onSubmit={handleMagicLink}>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="w-full p-2 mb-2 border border-gray-300 rounded-md"
+              value={magicEmail}
+              onChange={(e) => setMagicEmail(e.target.value)}
+              required
+            />
+            <button 
+              type="submit"
+              className="w-full py-2 bg-gradient-to-r from-blue-500 to-blue-300 text-white rounded-md hover:bg-blue-600"
+            >
+              Send Magic Link
+            </button>
+          </form>
         </div>
-        <button className="w-full mb-6 py-2 px-4 bg-gradient-to-r from-blue-500 to-blue-300 text-white rounded-lg hover:opacity-90 transition">
-          Send Magic Link
-        </button>
-
-        {/* Divider */}
-        <div className="flex items-center mb-6">
-          <hr className="flex-grow border-gray-300" />
-          <span className="mx-2 text-gray-500">or</span>
-          <hr className="flex-grow border-gray-300" />
-        </div>
-
-        {/* Email & Password */}
-        <div className="mb-4">
-          <label className="block text-gray-600 mb-1">Email</label>
-          <input
-            type="email"
-            placeholder="robert.fox@myemail.com"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300"
-          />
-        </div>
-        <div className="mb-4 relative">
-          <label className="block text-gray-600 mb-1">Password</label>
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Enter password"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-300 pr-10"
-          />
+        
+        <div className="text-center text-sm text-gray-500 mb-4">or</div>
+        
+        {/* Email/Password Login */}
+        <form onSubmit={handleLogin}>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input
+              type="email"
+              className="w-full p-2 border border-gray-300 rounded-md"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <div className="relative">
+              <input
+                type="password"
+                placeholder="Enter password"
+                className="w-full p-2 border border-gray-300 rounded-md"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <span className="absolute right-3 top-2 text-xs text-gray-400">hide</span>
+            </div>
+          </div>
+          
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="remember"
+                className="h-4 w-4 text-blue-600"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+              />
+              <label htmlFor="remember" className="ml-2 text-sm text-gray-600">
+                Remember Me
+              </label>
+            </div>
+            <a href="#" className="text-sm text-blue-500 hover:underline">
+              Forgot password?
+            </a>
+          </div>
+          
           <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+            type="submit"
+            className="w-full py-2 bg-gradient-to-r from-blue-500 to-blue-300 text-white rounded-md hover:bg-blue-600"
           >
-            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            Login
           </button>
-        </div>
-
-        {/* Remember & Forgot */}
-        <div className="flex items-center justify-between mb-6">
-          <label className="flex items-center text-gray-600">
-            <input type="checkbox" className="mr-2" />
-            Remember Me
-          </label>
-          <a href="#" className="text-blue-500 hover:underline text-sm">
-            Forgot password?
-          </a>
-        </div>
-
-        {/* Login Button */}
-        <button className="w-full mb-6 py-2 px-4 bg-gradient-to-r from-blue-500 to-blue-300 text-white rounded-lg hover:opacity-90 transition">
-          Login
-        </button>
-
-        {/* Divider */}
-        <div className="flex items-center mb-6">
-          <hr className="flex-grow border-gray-300" />
-          <span className="mx-2 text-gray-500">or</span>
-          <hr className="flex-grow border-gray-300" />
-        </div>
-
-        {/* Social Icons */}
+        </form>
+        
+        <div className="text-center text-sm text-gray-500 my-4">or</div>
+        
+        {/* Social Login Buttons */}
         <div className="flex justify-center space-x-4 mb-6">
-          <button className="p-2 bg-white border border-gray-200 rounded-full hover:shadow">
-            <FcGoogle size={24} />
+          <button 
+            onClick={() => handleSocialLogin('Google')}
+            className="p-2 rounded-full"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#DB4437">
+              <path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z" />
+            </svg>
           </button>
-          <button className="p-2 bg-blue-600 text-white rounded-full hover:opacity-90">
-            <FaFacebookF size={20} />
+          <button 
+            onClick={() => handleSocialLogin('Facebook')}
+            className="p-2 rounded-full"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1877F2">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
           </button>
-          <button className="p-2 bg-black text-white rounded-full hover:opacity-90">
-            <SiX size={20} />
+          <button 
+            onClick={() => handleSocialLogin('Twitter')}
+            className="p-2 rounded-full"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1DA1F2">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+            </svg>
           </button>
-          <button className="p-2 bg-blue-700 text-white rounded-full hover:opacity-90">
-            <FaLinkedinIn size={20} />
+          <button 
+            onClick={() => handleSocialLogin('LinkedIn')}
+            className="p-2 rounded-full"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0A66C2">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
           </button>
         </div>
-
-        {/* Register link */}
-        <p className="text-center text-gray-600">
-          Don’t have an account?{" "}
-          <a href="#" className="text-blue-500 hover:underline">
+        
+        {/* Registration Link */}
+        <div className="text-center text-sm">
+          Don't have an account? 
+          <a href="/register" className="text-blue-500 ml-1 hover:underline">
             Register now
           </a>
-        </p>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default LoginPage;

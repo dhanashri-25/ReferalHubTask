@@ -5,7 +5,7 @@ import AIAgentRules from '../components/AIAgentRules'
 import FirstCampaign from '../components/FirstCampaign'
 import Dashboard from '../pages/Dashboard'
 
-const Main = ({firstTime , setFirstTime , setDefaultValue}) => {
+const Main = ({firstTime , setFirstTime }) => {
 
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -27,7 +27,7 @@ const Main = ({firstTime , setFirstTime , setDefaultValue}) => {
         {currentStep === 1 && <BusinessProfileSetup goToNextStep={goToNextStep} />}
         {currentStep === 2 && <SyncCustomerData goToNextStep={goToNextStep}  goToBckStep ={goToBckStep}  />}
         {currentStep === 3 && <AIAgentRules goToNextStep={goToNextStep} goToBckStep ={goToBckStep}  />}
-        {currentStep === 4 && <FirstCampaign setFirstTime={setFirstTime}  setDefaultValue={setDefaultValue} />}
+        {currentStep === 4 && <FirstCampaign setFirstTime={setFirstTime}   />}
         
       </div>
     )}

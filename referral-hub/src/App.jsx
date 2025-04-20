@@ -1,4 +1,4 @@
-import { Suspense, useState } from "react";
+import { Suspense, useState , useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -35,13 +35,17 @@ const LoadingSpinner = () => (
 function App() {
 
   const [firstTime, setFirstTime] = useState(true);
-  const [defaultValue, setDefaultValue] = useState("Platform Setup"); 
-  const [head , setHead] = useState(defaultValue);
+  const [head , setHead] = useState("Platform Setup");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   
 
   const handlePageValue = (value) => {
     setHead(value);
   };
+
+  useEffect(() => {
+    setHead(firstTime ? "Platform Setup" : "Dashboard");
+    }, [firstTime]);
 
 
 
@@ -53,18 +57,18 @@ function App() {
 
           <div className="flex h-screen bg-gray-100">
 
-            <Sidebar onPageValueChange={handlePageValue} firstTime={firstTime} />
+            {isLoggedIn && <Sidebar onPageValueChange={handlePageValue} firstTime={firstTime} /> }
 
             <div className="flex-1 flex flex-col">
-              <Header page={head} />
+             {isLoggedIn && <Header page={head} />} 
               <div className="flex-1 p-6  overflow-y-auto">
 
                 <Routes>
 
-                  <Route path="/" element={ < Main setFirstTime={setFirstTime} firstTime={firstTime} setDefaultValue={setDefaultValue}  /> }  />
+
+                  <Route path="/" element={  isLoggedIn ? < Main setFirstTime={setFirstTime} firstTime={firstTime}  /> : <LoginPage setIsLoggedIn={setIsLoggedIn} /> }  />
                  
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/register" element={<Register />} />
+                  <Route path="/register" element={<Register  setIsLoggedIn={setIsLoggedIn}/>} />
 
 
                   <Route path="/promoters" element={< Promoters />} />

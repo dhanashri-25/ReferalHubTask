@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
+import {toast} from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 function Sidebar({ onPageValueChange, firstTime }) {
-  const [activePage, setActivePage] = useState(firstTime ? "Platform Setup" : "Dashboard");
+  const [activePage, setActivePage] = useState( "Platform Setup" );
 
-  const handleNavClick = (pageName) => {
-    setActivePage(pageName);
-    onPageValueChange(pageName);
+
+  useEffect(() => {
+      setActivePage(firstTime ? "Platform Setup" : "Dashboard");
+  }, [firstTime]);
+
+  const handleNavClick = (e , pageName) => {
+    if (firstTime && pageName !== "Platform Setup") {
+      toast.error("Please set up your account first!");
+      e.preventDefault(); 
+      
+    } else {
+      setActivePage(pageName);
+      onPageValueChange(pageName);
+    }
+   
   };
+
 
   return (
     <div className="w-64 bg-white border-r border-gray-200 h-full overflow-y-auto transition-all duration-300 md:block 
@@ -27,9 +41,10 @@ function Sidebar({ onPageValueChange, firstTime }) {
       <nav className="space-y-1 px-2 mt-8 md:mt-20">
         {firstTime && (
           <Link
-            onClick={() => handleNavClick("Platform Setup")}
+            to="/"
+            onClick={(e) => handleNavClick( e , "Platform Setup")}
             className={`flex items-center px-4 py-2 rounded-md ${
-              activePage === "Platform Setup" ? "bg-blue-50" : "hover:bg-gray-50"
+              activePage === "Platform Setup" ? "bg-blue-50  border-l-4 border-blue-500" : "hover:bg-gray-50"
             }`}
           >
             <svg
@@ -72,9 +87,9 @@ function Sidebar({ onPageValueChange, firstTime }) {
         )}
         <Link
           to="/ai-agent"
-          onClick={() => handleNavClick("Ai Agents")}
+          onClick={(e) => handleNavClick(e,"Ai Agents")}
           className={`flex items-center px-4 py-2 rounded-md ${
-            activePage === "Ai Agents" ? "bg-blue-50" : "hover:bg-gray-50"
+            activePage === "Ai Agents" ? "bg-blue-50  border-l-4 border-blue-500" : "hover:bg-gray-50"
           }`}
         >
           <svg
@@ -102,9 +117,9 @@ function Sidebar({ onPageValueChange, firstTime }) {
         </Link>
         <Link
           to="/"
-          onClick={() => handleNavClick("Dashboard")}
+          onClick={(e) => handleNavClick( e ,"Dashboard")}
           className={`flex items-center px-4 py-2 rounded-md ${
-            activePage === "Dashboard" ? "bg-blue-50" : "hover:bg-gray-50"
+            activePage === "Dashboard" ? "bg-blue-50  border-l-4 border-blue-500" : "hover:bg-gray-50"
           }`}
         >
           <svg
@@ -125,9 +140,9 @@ function Sidebar({ onPageValueChange, firstTime }) {
         </Link>
         <Link
           to="/campaign"
-          onClick={() => handleNavClick("Create & Manage Referral Campaigns")}
+          onClick={(e) => handleNavClick(e , "Create & Manage Referral Campaigns")}
           className={`flex items-center px-4 py-2 rounded-md ${
-            activePage === "Create & Manage Referral Campaigns" ? "bg-blue-50" : "hover:bg-gray-50"
+            activePage === "Create & Manage Referral Campaigns" ? "bg-blue-50  border-l-4 border-blue-500" : "hover:bg-gray-50"
           }`}
         >
           <svg
@@ -148,9 +163,9 @@ function Sidebar({ onPageValueChange, firstTime }) {
         </Link>
         <Link
           to="/promoters"
-          onClick={() => handleNavClick("Manage & Monitior Your Promoters Referral Activities")}
+          onClick={(e) => handleNavClick(e , "Manage & Monitior Your Promoters Referral Activities")}
           className={`flex items-center px-4 py-2 rounded-md ${
-            activePage === "Manage & Monitior Your Promoters Referral Activities" ? "bg-blue-50" : "hover:bg-gray-50"
+            activePage === "Manage & Monitior Your Promoters Referral Activities" ? "bg-blue-50  border-l-4 border-blue-500" : "hover:bg-gray-50"
           }`}
         >
           <svg
@@ -171,9 +186,9 @@ function Sidebar({ onPageValueChange, firstTime }) {
         </Link>
         <Link
           to="/leads"
-          onClick={() => handleNavClick("Manage & Monitior Your Leads")}
+          onClick={(e) => handleNavClick(e, "Manage & Monitior Your Leads")}
           className={`flex items-center px-4 py-2 rounded-md ${
-            activePage === "Manage & Monitior Your Leads" ? "bg-blue-50" : "hover:bg-gray-50"
+            activePage === "Manage & Monitior Your Leads" ? "bg-blue-50  border-l-4 border-blue-500" : "hover:bg-gray-50"
           }`}
         >
           <svg
@@ -194,9 +209,9 @@ function Sidebar({ onPageValueChange, firstTime }) {
         </Link>
         <Link
           to="/payouts"
-          onClick={() => handleNavClick("Manage & Monitior Your Payouts")}
+          onClick={(e) => handleNavClick( e  ,"Manage & Monitior Your Payouts")}
           className={`flex items-center px-4 py-2 rounded-md ${
-            activePage === "Manage & Monitior Your Payouts" ? "bg-blue-50" : "hover:bg-gray-50"
+            activePage === "Manage & Monitior Your Payouts" ? "bg-blue-50  border-l-4 border-blue-500" : "hover:bg-gray-50"
           }`}
         >
           <svg
@@ -220,9 +235,9 @@ function Sidebar({ onPageValueChange, firstTime }) {
       <div className="absolute bottom-0 w-64 border-t border-gray-200 bg-white">
         <Link
           to="/settings"
-          onClick={() => handleNavClick("Settings")}
+          onClick={(e) => handleNavClick(e , "Settings")}
           className={`flex items-center px-6 py-3 ${
-            activePage === "Settings" ? "bg-blue-50" : "hover:bg-gray-50"
+            activePage === "Settings" ? "bg-blue-50  border-l-4 border-blue-500"  : "hover:bg-gray-50"
           }`}
         >
           <svg
@@ -250,9 +265,9 @@ function Sidebar({ onPageValueChange, firstTime }) {
         </Link>
         <Link
           to="/help"
-          onClick={() => handleNavClick("Help")}
+          onClick={(e) => handleNavClick(e , "Help")}
           className={`flex items-center px-6 py-3 ${
-            activePage === "Help" ? "bg-blue-50" : "hover:bg-gray-50"
+            activePage === "Help" ? "bg-blue-50  border-l-4 border-blue-500" : "hover:bg-gray-50"
           }`}
         >
           <svg

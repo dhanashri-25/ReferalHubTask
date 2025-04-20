@@ -26,19 +26,21 @@ const Register = ({ setIsLoggedIn }) => {
       return;
     }
      
-    const res = await fetch('https://api.example.com/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await res.json();
-    if (res.ok) {
-     alert(data.message || 'Login Success!');
+    // const res = await fetch('https://api.example.com/login', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({ email, password }),
+    // });
+    // const data = await res.json();
+    // if (res.ok) {
+    //  alert(data.message || 'Login Success!');
+    // setIsLoggedIn(true);
+    // console.log('Registration data:', { email, password });
+    // }
+
     setIsLoggedIn(true);
-    console.log('Registration data:', { email, password });
-    }
     
     
   };
